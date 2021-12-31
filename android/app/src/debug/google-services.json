@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "155996547323",
+    "project_id": "ape-match-dev",
+    "storage_bucket": "ape-match-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155996547323:android:d2c55db6830a85b188285e",
+        "android_client_info": {
+          "package_name": "com.akito.ape_match"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155996547323-krl6581reaac07etidenqt6kf3emhoem.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkJpW7edh4mpgUnKJu9kKBAnlEmNZhAcQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155996547323-krl6581reaac07etidenqt6kf3emhoem.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "155996547323-is8eoooo3vlj2omoldtu6cmjve3d6ggm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.akito.apeMatch"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
