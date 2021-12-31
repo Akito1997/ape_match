@@ -4,12 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'mypage_views/mypage_view/best_rank.dart';
-import 'mypage_views/mypage_view/like_character.dart';
-import 'mypage_views/mypage_view/like_weapon.dart';
-import 'mypage_views/mypage_view/play_time.dart';
-import 'mypage_views/mypage_view/self_Introduction.dart';
-import 'mypage_views/mypage_view/user_name.dart';
+import 'best_rank.dart';
+import 'like_character.dart';
+import 'like_weapon.dart';
+import 'play_time.dart';
+import 'self_Introduction.dart';
+import 'user_name.dart';
 
 class MyPageWidget extends ConsumerStatefulWidget {
   UserData? userData;
@@ -22,9 +22,15 @@ class _MyPageWidgetState extends ConsumerState<MyPageWidget> with RouteAware {
   @override
   Widget build(BuildContext context) {
     double radius = MediaQuery.of(context).size.width / 3 + 50;
-    return SingleChildScrollView(
-      child: SizedBox(
-        width: double.infinity,
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+        image: AssetImage('images/mypageBack.png'),
+        fit: BoxFit.cover,
+      )),
+      child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

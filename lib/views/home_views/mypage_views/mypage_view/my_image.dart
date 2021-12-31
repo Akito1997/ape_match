@@ -7,24 +7,21 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
 
 //マイページ画面のimage
-Widget myImage(double radius, {String imageUrl = ""}) => Padding(
-      padding: const EdgeInsets.only(top: 50),
-      child: SizedBox(
-        width: radius + 50,
-        height: radius + 50,
-        child: Container(
-          width: radius, // 画像の幅
-          height: radius,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle, // Containerを丸くする
-            image: DecorationImage(
-              image: (imageUrl == "")
-                  ? Image.asset(
-                      'images/noImage.png',
-                    ).image
-                  : CachedNetworkImageProvider(imageUrl),
-              fit: BoxFit.cover,
-            ),
+Widget myImage(double radius, {String imageUrl = "", double spaceTop = 50}) =>
+    Padding(
+      padding: EdgeInsets.only(top: spaceTop),
+      child: Container(
+        width: radius, // 画像の幅
+        height: radius,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle, // Containerを丸くする
+          image: DecorationImage(
+            image: (imageUrl == "")
+                ? Image.asset(
+                    'images/noImage.png',
+                  ).image
+                : CachedNetworkImageProvider(imageUrl),
+            fit: BoxFit.cover,
           ),
         ),
       ),

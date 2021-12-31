@@ -1,20 +1,30 @@
 import 'package:ape_match/models/chat_room_model/chat_data.dart';
 import 'package:ape_match/models/message_model/message_data.dart';
 import 'package:ape_match/views/home_views/mypage_views/mypage_view/my_image.dart';
+import 'package:ape_match/views/home_views/post_views/detail_user_view.dart';
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 
-Widget messageWidget(
-    ChatRoomData chatRoomData, MessageData message, double width) {
+Widget messageWidget(ChatRoomData chatRoomData, MessageData message,
+    double width, BuildContext context) {
   if (message.uid == chatRoomData.partnerUser!.uid) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        myImage(50,
-            imageUrl: chatRoomData.partnerUser!.userImageUrl, spaceTop: 0),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        DetailUser(chatRoomData.partnerUser!)));
+          },
+          child: myImage(50,
+              imageUrl: chatRoomData.partnerUser!.userImageUrl, spaceTop: 0),
+        ),
         ConstrainedBox(
           constraints: BoxConstraints(maxWidth: width),
           child: Bubble(
@@ -28,8 +38,7 @@ Widget messageWidget(
             child: Text(
               message.message,
               style: const TextStyle(
-                fontFamily: 'Quicksand',
-              ),
+                  fontFamily: 'Quicksand', color: Color(0xFF78808b)),
             ),
           ),
         ),
@@ -61,7 +70,7 @@ Widget messageWidget(
       ConstrainedBox(
         constraints: BoxConstraints(maxWidth: width),
         child: Bubble(
-          color: Colors.lightBlueAccent,
+          color: Color(0xFF7dadaf),
           nipWidth: 2,
           nipHeight: 20,
           margin: const BubbleEdges.only(top: 10),
@@ -72,6 +81,7 @@ Widget messageWidget(
             message.message,
             style: const TextStyle(
               color: Colors.white,
+              fontFamily: 'Quicksand',
             ),
           ),
         ),

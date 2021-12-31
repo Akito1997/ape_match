@@ -6,6 +6,7 @@ Widget textEditWidget(int index, TextEditingController controller) {
     return TextField(
       controller: controller,
       decoration: const InputDecoration(labelText: "ユーザーネーム"),
+      maxLength: 6,
       maxLines: 1,
     );
   } else if (index == 3) {

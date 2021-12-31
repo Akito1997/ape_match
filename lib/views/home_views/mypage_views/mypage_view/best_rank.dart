@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 
-Widget bestRank({String rank = "ブロンズ"}) {
+Widget bestRank({double size = 50, String rank = "ブロンズ"}) {
   final imagePath = convertImagePath(rank);
 
   return SizedBox(
-    width: 50,
-    height: 50,
+    width: size,
+    height: size,
     child: Container(
       // 画像の高さ
       decoration: BoxDecoration(

@@ -1,3 +1,4 @@
+import 'package:ape_match/models/user_model/user_data.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -5,20 +6,22 @@ part 'chat_data.freezed.dart';
 part 'chat_data.g.dart';
 
 @freezed
-class ChatData with _$ChatData {
-  const factory ChatData(
-      {@TimestampConverter() required DateTime createdAt,
-      required String userName,
-      required String bestRank,
-      required String userImageUrl,
-      required String message,
-      required String uid,
-      required String gender}) = _ChatData;
+class ChatRoomData with _$ChatRoomData {
+  const factory ChatRoomData({
+    @TimestampConverter() required DateTime createdAt,
+    @TimestampConverter() required DateTime latestMessageCreatedAt,
+    required List<String> members,
+    required String documentId,
+    UserData? partnerUser,
+    required String latestMessage,
+    required bool seeFlag,
+    required String latestUid,
+  }) = _ChatRoomData;
 
-  factory PostData.fromJson(Map<String, dynamic> json) =>
-      postConverter.fromJson(json);
+  factory ChatRoomData.fromJson(Map<String, dynamic> json) =>
+      chatRoomConverter.fromJson(json);
 
-  static const postConverter = PostConverter();
+  static const chatRoomConverter = ChatRoomConverter();
 }
 
 class TimestampConverter implements JsonConverter<DateTime, Timestamp> {
@@ -33,23 +36,26 @@ class TimestampConverter implements JsonConverter<DateTime, Timestamp> {
   Timestamp toJson(DateTime date) => Timestamp.fromDate(date);
 }
 
-class PostConverter implements JsonConverter<PostData, Map<String, dynamic>> {
-  const PostConverter();
+class ChatRoomConverter
+    implements JsonConverter<ChatRoomData, Map<String, dynamic>> {
+  const ChatRoomConverter();
 
   @override
-  PostData fromJson(Map<String, dynamic> json) {
-    return _$_PostData(
-        createdAt: dateFromTimestampValue(json["createdAt"]),
-        userName: json['userName'] as String,
-        bestRank: json["bestRank"] as String,
-        message: json["message"] as String,
-        userImageUrl: json["userImageUrl"] as String,
-        uid: json["uid"] as String,
-        gender: json["gender"] as String);
+  ChatRoomData fromJson(Map<String, dynamic> json) {
+    return _$_ChatRoomData(
+      createdAt: dateFromTimestampValue(json["createdAt"]),
+      members: json["members"].cast<String>() as List<String>,
+      documentId: json['documentId'] as String,
+      latestMessage: json["latestMessage"] as String,
+      latestUid: json['latestUid'] as String,
+      seeFlag: json["seeFlag"] as bool,
+      latestMessageCreatedAt:
+          dateFromTimestampValue(json["latestMessageCreatedAt"]),
+    );
   }
 
   @override
-  Map<String, dynamic> toJson(PostData data) => data.toJson();
+  Map<String, dynamic> toJson(ChatRoomData data) => data.toJson();
 
   DateTime dateFromTimestampValue(dynamic value) =>
       (value as Timestamp).toDate();

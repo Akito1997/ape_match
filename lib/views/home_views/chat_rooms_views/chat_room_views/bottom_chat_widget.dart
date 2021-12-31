@@ -1,9 +1,15 @@
+import 'package:ape_match/models/chat_room_model/chat_data.dart';
 import 'package:ape_match/provider/chat_view_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-Widget bottomChatWidget(WidgetRef ref, FocusNode focusNode) {
+Widget bottomChatWidget(
+    WidgetRef ref,
+    FocusNode focusNode,
+    Future Function(ChatRoomData, String) onTapSendMessage,
+    ChatRoomData chatRoomData,
+    TextEditingController controller) {
   return SafeArea(
     child: Container(
       width: double.infinity,
@@ -14,12 +20,14 @@ Widget bottomChatWidget(WidgetRef ref, FocusNode focusNode) {
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.black12,
-                border: Border.all(color: Colors.white),
+                // border: Border.all(color: Colors.white),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: TextField(
                 focusNode: focusNode,
-                maxLines: null,
+                controller: controller,
+                maxLines: 5,
+                minLines: 1,
                 onChanged: (text) {
                   ref.watch(chatProvider.state).state = text;
                 },
@@ -36,10 +44,14 @@ Widget bottomChatWidget(WidgetRef ref, FocusNode focusNode) {
             ),
           ),
           IconButton(
-              onPressed: () {},
+              onPressed: () async {
+                await onTapSendMessage(chatRoomData, ref.read(chatProvider));
+                ref.watch(chatProvider.state).state = "";
+                controller.clear();
+              },
               icon: const Icon(
                 Icons.send,
-                color: Colors.blue,
+                color: Color(0xFF78808b),
               ))
         ],
       ),

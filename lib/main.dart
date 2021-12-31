@@ -1,7 +1,21 @@
+import 'package:ape_match/views/home_views/home_view.dart';
+import 'package:ape_match/views/register_views/not_register_view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(const ProviderScope(child: MyApp()));
+}
+
+bool isRelease() {
+  bool _bool;
+  const bool.fromEnvironment('dart.vm.product') ? _bool = true : _bool = false;
+  return _bool;
 }
 
 class MyApp extends StatelessWidget {
@@ -10,58 +24,59 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        textTheme: GoogleFonts.mPlus1pTextTheme(
+          Theme.of(context).textTheme,
+        ),
+        appBarTheme: AppBarTheme(
+            backgroundColor: Colors.white,
+            titleTextStyle: GoogleFonts.mPlusRounded1c(
+              color: Color(0XFFFF9491),
+              // color: Color(0xFF78808b),
+              fontSize: 25,
+            ),
+            iconTheme: IconThemeData(
+              color: Color(0XFFFF9491),
+            )),
+        primaryColor: Color(0XFFFF9491),
+        primaryTextTheme: TextTheme(
+          subtitle1: TextStyle(color: Color(0XFFFF9491)),
+        ),
+        primaryIconTheme: IconThemeData(
+          color: Color(0XFFFF9491),
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const NewWidget(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+class NewWidget extends ConsumerWidget {
+  const NewWidget({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    return StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
+        if (snapshot.hasError) {
+          // ignore: avoid_print
+          return Text('Error: ${snapshot.error}');
+        }
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          // スプラッシュ画面などに書き換えても良い
+          return const SizedBox();
+        }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+        if (snapshot.hasData) {
+          // ログインしている時の処理
+          return const HomePage();
+        }
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        //ログインしていない時の処理
+        return const NotRegisterPage();
+      },
     );
   }
 }

@@ -1,3 +1,3 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final keybordProvider = StateProvider<String>((ref) => "");
+final keyboardProvider = StateProvider<double>((ref) => 100);
