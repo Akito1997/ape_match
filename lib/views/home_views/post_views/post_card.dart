@@ -35,7 +35,7 @@ Widget postCard(
               postData.userData!.userName,
               style: TextStyle(
                   color: (postData.userData!.gender == "男")
-                      ? Color(0xFF162255)
+                      ? Color(0xFF0a97c1)
                       : Color(0xFFf4958f),
                   fontSize: 20),
             ),
@@ -60,7 +60,7 @@ Widget postCard(
                 icon: const Icon(
                   Icons.mail,
                   size: 34,
-                  color: Colors.orange,
+                  color: Color(0xFFf89930),
                 ),
               ),
         subtitle: Text(

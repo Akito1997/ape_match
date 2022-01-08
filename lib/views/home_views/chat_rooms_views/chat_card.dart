@@ -34,20 +34,8 @@ class ChatCardWidget extends ConsumerWidget {
       ),
       direction: DismissDirection.endToStart,
       confirmDismiss: (direction) async {
-        await deleteDialog(
-            context, _chatRoomViewModel, _chatRoomData.documentId);
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          duration: const Duration(seconds: 3),
-          content: Row(
-            children: [
-              const Icon(
-                Icons.delete,
-                color: Colors.white,
-              ),
-              Text('${_chatRoomData.partnerUser!.userName}を削除しました。'),
-            ],
-          ),
-        ));
+        await deleteDialog(context, _chatRoomViewModel,
+            _chatRoomData.documentId, _chatRoomData.partnerUser!.userName);
       },
       child: GestureDetector(
         onTap: () {

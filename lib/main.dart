@@ -6,6 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+//色
+//白Color(0xFFfff1ef)
+//赤Color(0xFFa12f38)
+//緑Color(0xFF728b4a)
+//青Color(0xFF0a97c1)
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -32,19 +37,19 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
             backgroundColor: Colors.white,
             titleTextStyle: GoogleFonts.mPlusRounded1c(
-              color: Color(0XFFFF9491),
+              color: Colors.black,
               // color: Color(0xFF78808b),
               fontSize: 25,
             ),
             iconTheme: IconThemeData(
-              color: Color(0XFFFF9491),
+              color: Color(0xFF728b4a),
             )),
-        primaryColor: Color(0XFFFF9491),
+        primaryColor: Color(0xFF728b4a),
         primaryTextTheme: TextTheme(
-          subtitle1: TextStyle(color: Color(0XFFFF9491)),
+          subtitle1: TextStyle(color: Color(0xFF728b4a)),
         ),
         primaryIconTheme: IconThemeData(
-          color: Color(0XFFFF9491),
+          color: Color(0xFF728b4a),
         ),
       ),
       home: const NewWidget(),

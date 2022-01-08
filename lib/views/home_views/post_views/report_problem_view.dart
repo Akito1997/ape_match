@@ -14,7 +14,7 @@ class ReportProblem extends StatefulWidget {
 class _ReportProblemState extends State<ReportProblem> {
   String text = "";
 
-  void textChange(String e) {
+  void _textChange(String e) {
     text = e;
   }
 
@@ -36,7 +36,7 @@ class _ReportProblemState extends State<ReportProblem> {
             ),
             TextField(
               maxLength: 300,
-              onChanged: textChange,
+              onChanged: _textChange,
             ),
             ElevatedButton(
                 onPressed: () async {

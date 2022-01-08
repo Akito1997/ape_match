@@ -16,7 +16,8 @@ Widget registerButton(double width, BuildContext context) {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const RegisterPage()));
         },
-        style: ElevatedButton.styleFrom(shape: const StadiumBorder()),
+        style: ElevatedButton.styleFrom(
+            shape: const StadiumBorder(), primary: Color(0xFF0a97c1)),
         child: const Text(
           "新規登録",
           style: TextStyle(fontSize: 18),
@@ -39,8 +40,7 @@ Widget loginButton(double width, BuildContext context) {
               MaterialPageRoute(builder: (context) => const LoginPage()));
         },
         style: ElevatedButton.styleFrom(
-          shape: const StadiumBorder(),
-        ),
+            shape: const StadiumBorder(), primary: Color(0xFF0a97c1)),
         child: const Text(
           "ログイン",
           style: TextStyle(fontSize: 18),
@@ -61,7 +61,7 @@ Widget anonymousRegisterButton(
       child: TextButton(
         child: const Text(
           "スキップ",
-          style: TextStyle(fontSize: 18),
+          style: TextStyle(fontSize: 18, color: Color(0xFF0a97c1)),
         ),
         onPressed: () async {
           await singInAno(key.currentContext);
@@ -73,27 +73,30 @@ Widget anonymousRegisterButton(
 
 //
 Widget appExplanation(double width) {
-  return SizedBox(
-    width: width - 50,
-    child: Column(
-      children: const [
-        FittedBox(
-          child: Text(
-            "APEXで繋がるマッチングアプリへ",
+  return Padding(
+    padding: EdgeInsets.only(top: 100),
+    child: SizedBox(
+      width: width - 50,
+      child: Column(
+        children: const [
+          FittedBox(
+            child: Text(
+              "APEXで繋がるマッチングアプリへ",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Text(
+            "ようこそ！",
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
-        ),
-        Text(
-          "ようこそ！",
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ],
+        ],
+      ),
     ),
   );
 }

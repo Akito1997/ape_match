@@ -5,33 +5,21 @@ BottomNavigationBar bottomNavigatorBarItem(
     BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-            activeIcon: Icon(
-              Icons.sports_esports,
-              size: 30,
-              color: Color(0XFFFF9491),
-            ),
+            activeIcon: Icon(Icons.sports_esports, size: 30, color: Colors.red),
             icon: Icon(
               Icons.sports_esports,
               size: 25,
             ),
             label: "リアルタイム"),
         BottomNavigationBarItem(
-            activeIcon: Icon(
-              Icons.chat,
-              size: 30,
-              color: Color(0XFFFF9491),
-            ),
+            activeIcon: Icon(Icons.chat, size: 30, color: Colors.red),
             icon: Icon(
               Icons.chat,
               size: 22,
             ),
-            label: "チャット"),
+            label: "やりとり"),
         BottomNavigationBarItem(
-            activeIcon: Icon(
-              Icons.person,
-              size: 30,
-              color: Color(0XFFFF9491),
-            ),
+            activeIcon: Icon(Icons.person, size: 30, color: Colors.red),
             icon: Icon(
               Icons.person,
               size: 22,
@@ -39,7 +27,7 @@ BottomNavigationBar bottomNavigatorBarItem(
             label: "マイページ"),
       ],
       currentIndex: _currentIndex,
-      fixedColor: Colors.pink[300],
+      fixedColor: Colors.red,
       onTap: _onItemTapped,
       type: BottomNavigationBarType.fixed,
     );

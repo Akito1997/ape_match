@@ -67,16 +67,21 @@ class _HomePageState extends ConsumerState<HomePage> {
           });
 
           return Scaffold(
-            backgroundColor:
-                (_currentIndex == 0) ? const Color(0xFFfff1ef) : null,
             appBar: AppBar(
               title: (_currentIndex == 0)
                   ? const Text(
                       "リアルタイム募集",
+                      style: TextStyle(fontSize: 20),
                     )
                   : (_currentIndex == 1)
-                      ? const Text("友達")
-                      : const Text("マイページ"),
+                      ? const Text(
+                          "やりとり",
+                          style: TextStyle(fontSize: 20),
+                        )
+                      : const Text(
+                          "マイページ",
+                          style: TextStyle(fontSize: 20),
+                        ),
               leading: (_currentIndex == 2)
                   ? IconButton(
                       onPressed: () {
@@ -124,7 +129,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                     child: const Icon(
                       Icons.border_color,
                     ),
-                    backgroundColor: Colors.orange[400],
+                    backgroundColor: Color(0xFFf89930),
                   )
                 : Container(),
             bottomNavigationBar:

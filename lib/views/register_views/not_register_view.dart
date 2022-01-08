@@ -35,7 +35,10 @@ class NotRegisterPageState extends ConsumerState<NotRegisterPage> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             appExplanation(_width),
-            Image.asset("images/apeIcon.png"),
+            Expanded(
+                child: Image.asset(
+              "images/apeIcon.png",
+            )),
             anonymousRegisterButton(
                 _width, _scaffoldKey, firebaseAuthViewModel.signInAnonymous),
             registerButton(_width, context),
