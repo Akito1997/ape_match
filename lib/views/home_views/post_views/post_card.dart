@@ -63,9 +63,12 @@ Widget postCard(
                   color: Color(0xFFf89930),
                 ),
               ),
-        subtitle: Text(
-          postData.message,
-          style: const TextStyle(fontSize: 14, color: Colors.black87),
+        subtitle: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            postData.message,
+            style: const TextStyle(fontSize: 14, color: Colors.black87),
+          ),
         ),
       ),
     ),

@@ -1,4 +1,5 @@
 import 'package:ape_match/view_models/firebase_auth_view_model.dart';
+import 'package:ape_match/views/register_views/terms_service_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -39,6 +40,7 @@ class NotRegisterPageState extends ConsumerState<NotRegisterPage> {
                 child: Image.asset(
               "images/apeIcon.png",
             )),
+            termsOfServiceButton(context),
             anonymousRegisterButton(
                 _width, _scaffoldKey, firebaseAuthViewModel.signInAnonymous),
             registerButton(_width, context),

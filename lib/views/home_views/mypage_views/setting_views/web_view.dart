@@ -38,7 +38,7 @@ class WebPage extends StatelessWidget {
       ),
       body: WebView(
         initialUrl:
-            'https://akitonanndaze.wixsite.com/website-1/%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84',
+            'https://akitonanndaze.wixsite.com/website-2/%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84',
         javascriptMode: JavascriptMode.unrestricted,
         onWebViewCreated: (WebViewController controller) {
           _controller = controller;

@@ -65,12 +65,8 @@ class ChatPageState extends ConsumerState<ChatPage> {
                   _listChatRoomData, widget.userViewModel.userData.uid),
               builder: (context, AsyncSnapshot<List<ChatRoomData>> snapshot) {
                 if (snapshot.connectionState != ConnectionState.done) {
-                  return const SizedBox(
-                    width: 100,
-                    height: 3,
-                    child: LinearProgressIndicator(
-                      minHeight: 3,
-                    ),
+                  return LinearProgressIndicator(
+                    minHeight: 3,
                   );
                 }
 
@@ -108,12 +104,8 @@ class ChatViewState extends ConsumerState<ChatView> {
         future: newChatList(),
         builder: (context, AsyncSnapshot<List<ChatRoomData>> snapshot) {
           if (snapshot.connectionState != ConnectionState.done) {
-            return const SizedBox(
-              width: 100,
-              height: 3,
-              child: LinearProgressIndicator(
-                minHeight: 3,
-              ),
+            return LinearProgressIndicator(
+              minHeight: 3,
             );
           }
           if (snapshot.data!.isEmpty) {
