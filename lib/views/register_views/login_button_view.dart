@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 Widget registerButton(double width, BuildContext context) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: Container(
+    child: SizedBox(
       width: width - 100,
       height: 40,
       child: ElevatedButton(
@@ -16,8 +16,7 @@ Widget registerButton(double width, BuildContext context) {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const RegisterPage()));
         },
-        style: ElevatedButton.styleFrom(
-            shape: const StadiumBorder(), primary: Color(0xFF0a97c1)),
+        style: ElevatedButton.styleFrom(shape: const StadiumBorder()),
         child: const Text(
           "新規登録",
           style: TextStyle(fontSize: 18),
@@ -39,8 +38,7 @@ Widget loginButton(double width, BuildContext context) {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const LoginPage()));
         },
-        style: ElevatedButton.styleFrom(
-            shape: const StadiumBorder(), primary: Color(0xFF0a97c1)),
+        style: ElevatedButton.styleFrom(shape: const StadiumBorder()),
         child: const Text(
           "ログイン",
           style: TextStyle(fontSize: 18),
@@ -54,14 +52,14 @@ Widget loginButton(double width, BuildContext context) {
 Widget anonymousRegisterButton(
     double width, GlobalKey key, Function singInAno) {
   return Padding(
-    padding: const EdgeInsets.all(8.0),
+    padding: const EdgeInsets.only(top: 5),
     child: SizedBox(
       width: width - 100,
       height: 40,
       child: TextButton(
         child: const Text(
           "スキップ",
-          style: TextStyle(fontSize: 18, color: Color(0xFF0a97c1)),
+          style: TextStyle(fontSize: 18),
         ),
         onPressed: () async {
           await singInAno(key.currentContext);

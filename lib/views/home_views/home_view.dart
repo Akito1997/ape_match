@@ -1,4 +1,5 @@
 import 'package:ape_match/models/user_model/user_data.dart';
+import 'package:ape_match/provider/message_view_provider.dart';
 import 'package:ape_match/provider/user_provider.dart';
 import 'package:ape_match/view_models/firebase_auth_view_model.dart';
 import 'package:ape_match/view_models/user_view_model.dart';
@@ -38,7 +39,7 @@ class _HomePageState extends ConsumerState<HomePage> {
     userViewModel.setRef(ref);
 
     _pageWidgets = [
-      PostPage(),
+      const PostPage(),
       ChatPage(userViewModel),
       MyPageWidget(userData: ref.read(userProvider)),
     ];
@@ -120,6 +121,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             floatingActionButton: (_currentIndex == 0)
                 ? FloatingActionButton(
                     onPressed: () async {
+                      ref.watch(messageProvider.state).state = "";
                       await Navigator.push(
                           context,
                           MaterialPageRoute(

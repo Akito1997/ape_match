@@ -7,6 +7,10 @@ Widget userName(String name, String gender) => Padding(
         name,
         style: TextStyle(
             fontSize: 26,
-            color: (gender == "男") ? Color(0xFF162255) : Color(0xFFf4958f)),
+            color: (gender == "男")
+                ? Color(0xFF162255)
+                : (gender == "")
+                    ? Colors.black
+                    : Color(0xFFf4958f)),
       ),
     );

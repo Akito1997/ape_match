@@ -35,8 +35,10 @@ Widget postCard(
               postData.userData!.userName,
               style: TextStyle(
                   color: (postData.userData!.gender == "男")
-                      ? Color(0xFF0a97c1)
-                      : Color(0xFFf4958f),
+                      ? const Color(0xFF0a97c1)
+                      : (postData.userData!.gender == "")
+                          ? Colors.black
+                          : const Color(0xFFf4958f),
                   fontSize: 20),
             ),
             Padding(
@@ -63,12 +65,9 @@ Widget postCard(
                   color: Color(0xFFf89930),
                 ),
               ),
-        subtitle: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            postData.message,
-            style: const TextStyle(fontSize: 14, color: Colors.black87),
-          ),
+        subtitle: Text(
+          postData.message,
+          style: const TextStyle(fontSize: 14, color: Colors.black87),
         ),
       ),
     ),

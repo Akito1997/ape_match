@@ -38,10 +38,7 @@ class FirebaseAuthViewModel {
 
     if (result == FirebaseAuthResultStatus.Successful) {
       // ログイン成功時の処理
-      final uid = FirebaseAuth.instance.currentUser!.uid;
-      final _data = UserViewModel.defaultUserData.copyWith(uid: uid);
-      final newData = await showDialogView(context, _data);
-      await userViewModel.setNewDataToFirestore(newData, uid);
+      await showDialogView(context, userViewModel.setNewDataToFirestore);
     } else {
       final errorMessage =
           FirebaseAuthExceptionHandler.exceptionMessage(result);
@@ -74,11 +71,7 @@ class FirebaseAuthViewModel {
     if (result == FirebaseAuthResultStatus.Successful) {
       // ログイン成功時の処理
       final uid = FirebaseAuth.instance.currentUser!.uid;
-
-      final data = UserViewModel.defaultUserData.copyWith(uid: uid);
-      final newData = await showDialogView(context, data);
-      await userViewModel.setNewDataToFirestore(newData, uid);
-      Navigator.of(context).pop();
+      await showDialogView(context, userViewModel.setNewDataToFirestore);
     } else {
       // ログイン失敗時の処理
       final errorMessage =
@@ -112,11 +105,7 @@ class FirebaseAuthViewModel {
     if (result == FirebaseAuthResultStatus.Successful) {
       // ログイン成功時の処理
       final uid = FirebaseAuth.instance.currentUser!.uid;
-
-      final data = UserViewModel.defaultUserData.copyWith(uid: uid);
-      final newData = await showDialogView(context, data);
-      await userViewModel.setNewDataToFirestore(newData, uid);
-      Navigator.of(context).pop();
+      await showDialogView(context, userViewModel.setNewDataToFirestore);
     } else {
       // ログイン失敗時の処理
       final errorMessage =

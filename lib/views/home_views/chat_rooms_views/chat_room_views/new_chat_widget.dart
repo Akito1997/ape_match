@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 Widget newChatWidget(
     WidgetRef ref,
     FocusNode focusNode,
+    BuildContext context,
     Future Function(ChatRoomData, String) func,
     ChatRoomData chatRoomData,
     TextEditingController controller) {
@@ -20,7 +21,7 @@ Widget newChatWidget(
           ),
         ),
       ),
-      bottomChatWidget(ref, focusNode, func, chatRoomData, controller)
+      bottomChatWidget(ref, focusNode, context, func, chatRoomData, controller)
     ],
   );
 }

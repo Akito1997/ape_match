@@ -28,9 +28,9 @@ class LogOutWidget extends StatelessWidget {
   }
 }
 
-void logOut(BuildContext context) async {
+void logOut(BuildContext _context) async {
   showDialog(
-    context: context,
+    context: _context,
     builder: (BuildContext context) {
       return AlertDialog(
         title: const Text("ログアウト"),
@@ -49,7 +49,6 @@ void logOut(BuildContext context) async {
             onPressed: () async {
               await FirebaseAuth.instance.signOut();
               Navigator.popUntil(context, (route) => route.isFirst);
-              // setState();
             },
             child: const Text("OK"),
           ),

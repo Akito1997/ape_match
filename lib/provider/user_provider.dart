@@ -5,3 +5,4 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final userProvider =
     StateProvider<UserData>((ref) => UserViewModel.defaultUserData);
 final genderProvider = StateProvider<String>((ref) => "男");
+final userNameProvider = StateProvider<String>((ref) => "");

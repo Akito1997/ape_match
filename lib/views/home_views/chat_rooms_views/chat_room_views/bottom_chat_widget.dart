@@ -1,5 +1,6 @@
 import 'package:ape_match/models/chat_room_model/chat_data.dart';
 import 'package:ape_match/provider/chat_view_provider.dart';
+import 'package:ape_match/views/error_views/error_dialog_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 Widget bottomChatWidget(
     WidgetRef ref,
     FocusNode focusNode,
+    BuildContext context,
     Future Function(ChatRoomData, String) onTapSendMessage,
     ChatRoomData chatRoomData,
     TextEditingController controller) {
@@ -45,9 +47,13 @@ Widget bottomChatWidget(
           ),
           IconButton(
               onPressed: () async {
-                await onTapSendMessage(chatRoomData, ref.read(chatProvider));
-                ref.watch(chatProvider.state).state = "";
-                controller.clear();
+                if (ref.read(chatProvider).isEmpty) {
+                  showErrorDialog(context, "メッセージが何も入力されていません。");
+                } else {
+                  await onTapSendMessage(chatRoomData, ref.read(chatProvider));
+                  ref.watch(chatProvider.state).state = "";
+                  controller.clear();
+                }
               },
               icon: const Icon(
                 Icons.send,

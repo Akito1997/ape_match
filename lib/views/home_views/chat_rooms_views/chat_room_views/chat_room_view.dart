@@ -69,6 +69,7 @@ class ChatRoomState extends ConsumerState<ChatRoom> {
                 return newChatWidget(
                     ref,
                     _focusNodeName,
+                    context,
                     _chatRoomViewModel.onTapSendMessage,
                     widget.chatRoomData,
                     _controller);
@@ -131,8 +132,8 @@ class MessageViewState extends ConsumerState<MessageView> {
             },
           ),
         ),
-        bottomChatWidget(ref, widget.focusNodName, widget.onTapSendMessage,
-            widget.chatRoomData, widget.controller)
+        bottomChatWidget(ref, widget.focusNodName, context,
+            widget.onTapSendMessage, widget.chatRoomData, widget.controller)
       ],
     );
   }

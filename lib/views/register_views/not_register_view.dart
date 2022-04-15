@@ -28,7 +28,6 @@ class NotRegisterPageState extends ConsumerState<NotRegisterPage> {
     double _width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: Color(0xFFfff1ef),
       key: _scaffoldKey,
       body: Container(
         padding: const EdgeInsets.only(bottom: 50),

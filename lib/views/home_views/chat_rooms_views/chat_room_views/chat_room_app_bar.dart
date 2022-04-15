@@ -23,12 +23,13 @@ AppBar chatBar(BuildContext context, ChatRoomData chatRoomData,
         ),
         Padding(
           padding: const EdgeInsets.only(left: 10),
-          child: Text(
-            chatRoomData.partnerUser!.userName,
-            style: (chatRoomData.partnerUser!.gender == "男")
-                ? const TextStyle(color: Color(0xFF162255))
-                : const TextStyle(color: Color(0xFFf4958f)),
-          ),
+          child: Text(chatRoomData.partnerUser!.userName,
+              style: TextStyle(
+                  color: (chatRoomData.partnerUser!.gender == "男")
+                      ? Color(0xFF162255)
+                      : (chatRoomData.partnerUser!.gender == "")
+                          ? Colors.black
+                          : Color(0xFFf4958f))),
         ),
         showBottom(context, chatRoomData.partnerUser!, setState)
       ],
